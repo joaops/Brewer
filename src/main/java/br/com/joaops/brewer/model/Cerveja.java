@@ -14,30 +14,31 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package br.com.joaops.brewer.controller;
-
-import br.com.joaops.brewer.model.Cerveja;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+package br.com.joaops.brewer.model;
 
 /**
  *
  * @author João
  */
-@Controller
-public class CervejasController {
+public class Cerveja {
     
-    @RequestMapping(value = "/cervejas/novo", method = RequestMethod.GET)
-    public String novo() {
-        return "cerveja/CadastroCerveja";
+    private String sku;
+    private String nome;
+    
+    public String getSku() {
+        return sku;
     }
     
-    @RequestMapping(value = "/cervejas/novo", method = RequestMethod.POST)
-    public String cadastrar(Cerveja cerveja) {
-        System.out.println(">>>>> nome: "+cerveja.getNome());
-        System.out.println(">>>>> sku: "+cerveja.getSku());
-        return "cerveja/CadastroCerveja";
+    public void setSku(String sku) {
+        this.sku = sku;
+    }
+    
+    public String getNome() {
+        return nome;
+    }
+    
+    public void setNome(String nome) {
+        this.nome = nome;
     }
     
 }
