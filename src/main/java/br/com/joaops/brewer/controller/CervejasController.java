@@ -47,8 +47,9 @@ public class CervejasController {
         //Salvar no Banco de Dados...
         
         attributes.addFlashAttribute("mensagem", "Cerveja Salva com Sucesso!");
-        System.out.println(">>>>> nome: "+cerveja.getNome());
         System.out.println(">>>>> sku: "+cerveja.getSku());
+        System.out.println(">>>>> nome: "+cerveja.getNome());
+        System.out.println(">>>>> descrição: "+cerveja.getDescricao());
         return "redirect:/cervejas/novo";
     }
     
