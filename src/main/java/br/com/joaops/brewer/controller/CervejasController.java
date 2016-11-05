@@ -17,6 +17,7 @@
 package br.com.joaops.brewer.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  *
@@ -24,5 +25,10 @@ import org.springframework.stereotype.Controller;
  */
 @Controller
 public class CervejasController {
+    
+    @RequestMapping("/cervejas/novo")
+    public String novo() {
+        return "cerveja/CadastroCerveja";
+    }
     
 }
