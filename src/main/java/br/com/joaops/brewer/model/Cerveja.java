@@ -16,13 +16,18 @@
  */
 package br.com.joaops.brewer.model;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 /**
  *
  * @author João
  */
 public class Cerveja {
     
+    @NotBlank
     private String sku;
+    
+    @NotBlank
     private String nome;
     
     public String getSku() {
