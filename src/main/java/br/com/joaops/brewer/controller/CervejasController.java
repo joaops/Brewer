@@ -19,9 +19,11 @@ package br.com.joaops.brewer.controller;
 import br.com.joaops.brewer.model.Cerveja;
 import javax.validation.Valid;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
  *
@@ -36,13 +38,18 @@ public class CervejasController {
     }
     
     @RequestMapping(value = "/cervejas/novo", method = RequestMethod.POST)
-    public String cadastrar(@Valid Cerveja cerveja, BindingResult result) {
+    public String cadastrar(@Valid Cerveja cerveja, BindingResult result, Model model, RedirectAttributes attributes) {
         if (result.hasErrors()) {
-            System.out.println(">>>>> Tem Erro Sim!");
+            model.addAttribute("mensagem", "Erro no Formulário");
+            return "cerveja/CadastroCerveja";
         }
+        
+        //Salvar no Banco de Dados...
+        
+        attributes.addFlashAttribute("mensagem", "Cerveja Salva com Sucesso!");
         System.out.println(">>>>> nome: "+cerveja.getNome());
         System.out.println(">>>>> sku: "+cerveja.getSku());
-        return "cerveja/CadastroCerveja";
+        return "redirect:/cervejas/novo";
     }
     
 }
