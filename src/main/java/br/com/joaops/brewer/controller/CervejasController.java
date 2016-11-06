@@ -33,15 +33,14 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class CervejasController {
     
     @RequestMapping(value = "/cervejas/novo", method = RequestMethod.GET)
-    public String novo() {
+    public String novo(Cerveja cerveja) {
         return "cerveja/CadastroCerveja";
     }
     
     @RequestMapping(value = "/cervejas/novo", method = RequestMethod.POST)
     public String cadastrar(@Valid Cerveja cerveja, BindingResult result, Model model, RedirectAttributes attributes) {
         if (result.hasErrors()) {
-            model.addAttribute("mensagem", "Erro no Formulário");
-            return "cerveja/CadastroCerveja";
+            return novo(cerveja);
         }
         
         //Salvar no Banco de Dados...

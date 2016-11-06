@@ -23,17 +23,20 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </head>
     <body>
         <h1>Thymeleaf Configurado!</h1>
-        <form method="post">
+        <div th:each="erro : ${#fields.detailedErrors('${cerveja.*}')}">
+            <span th:text="${erro.message}"></span>
+        </div>
+        <form method="post" th:object="${cerveja}">
             <span th:text="${mensagem}"></span>
             <br/>
             <label for="sku">SKU</label>
-            <input type="text" id="sku" name="sku" />
+            <input type="text" id="sku" th:field="*{sku}" />
             <br/>
             <label for="nome">Nome</label>
-            <input type="text" id="nome" name="nome" />
+            <input type="text" id="nome" th:field="*{nome}" />
             <br/>
             <label for="descricao">Descrição</label>
-            <textarea rows="3" cols="30" id="descricao" name="descricao" ></textarea>
+            <textarea rows="3" cols="30" id="descricao" th:field="*{descricao}" ></textarea>
             <br/>
             <input type="submit" value="Salvar" />
         </form>
